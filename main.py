@@ -28,13 +28,20 @@ def respond(voice_data):
         voice_respond(ctime())
     elif 'search' in voice_data:
         voice_respond('What do you want to search for?')
-        search = record_audio()
+        while True:
+           search = record_audio() 
+           if search != False:
+               break
         url = 'https://google.com/search?q=' + search
         webbrowser.get().open(url)
         voice_respond('Here is what I found for ' + search)
     elif 'find location' in voice_data:
         voice_respond('What is the location?')
         location = record_audio()
+        while True:
+            location = record_audio()
+            if location != False:
+                break
         url = 'https://google.nl/maps/place/' + location + '/&amp;'
         webbrowser.get().open(url)
         voice_respond('Here is the location for ' + location)
